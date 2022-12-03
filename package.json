@@ -1,0 +1,31 @@
+{
+  "name": "recipe-calculator",
+  "version": "1.0.0",
+  "description": "An app to keep track of ingredient inventory, then create and save recipes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookiesntech/recipe-calculator.git"
+  },
+  "author": "Marina Tacheva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cookiesntech/recipe-calculator/issues"
+  },
+  "homepage": "https://github.com/cookiesntech/recipe-calculator#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongodb": "^4.12.1",
+    "mongoose": "^6.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
