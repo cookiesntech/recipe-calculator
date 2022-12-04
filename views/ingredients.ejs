@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form action="/ingredients/addIngredient" method="POST">
+        <input type="text" placeholder="Ingredient" name="ingredient">
+        <input type="number" placeholder="Amount in grams" name="amount">
+        <input type="number" placeholder="Water %" name="water" step="any">
+        <input type="number" placeholder="Dairy fat/oil %" name="fat" step="any">
+        <input type="number" placeholder="Sugar %" name="sugar" step="any">
+        <input type="number" placeholder="Cocoa butter %" name="cocoa" step="any">
+        <button type="submit" id="save-ingredient">Save to inventory</button>
+    </form>
+    <h2>Inventory</h2>
+    <table>
+        <tr>
+            <td>Select</td>
+            <td>Ingredient</td>
+            <td>Amount in stock</td>
+            <td>Water</td>
+            <td>Dairy fat/Oil</td>
+            <td>Sugar</td>
+            <td>Cocoa butter</td>
+        </tr>
+        <% ingredients.forEach( el => { %>
+            <tr class="ingredient" data-id='<%=el._id%>'>
+                <td><input type="checkbox"></td>
+                <td><%= el.ingredient %></td>
+                <td><%= el.amount %></td>
+                <td><%= el.water %></td>
+                <td><%= el.fat %></td>
+                <td><%= el.sugar %></td>
+                <td><%= el.cocoa %></td>
+                <td class="edit-delete" >
+                    <!-- <span class='edit-ingredient'>Edit</span> -->
+                    <span class='delete-ingredient'>Delete</span>
+                </td>
+            </tr>    
+            <% }) %>
+    </table>
+    <button type="submit" id="create-recipe">Create recipe</button>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
