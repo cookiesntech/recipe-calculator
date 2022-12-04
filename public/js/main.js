@@ -1,21 +1,15 @@
-const toBeDeleted = document.querySelectorAll(".delete-ingredient");
-//const createRecipe = document.querySelector("#create-recipe");
+const deleteBtn = document.querySelectorAll(".delete-ingredient");
+const createRecipeBtn = document.getElementById("create-recipe");
 
-Array.from(toBeDeleted).forEach((el) => {
+Array.from(deleteBtn).forEach((el) => {
     el.addEventListener('click', deleteIngredient);
 })
 
-// async function testResponse() {
-//     try {
-//         alert("You tried to do something.")
-//     } catch(err) {
-//         console.error(err);
-//     }
-// }
+createRecipeBtn.addEventListener('click', createRecipe);
 
 async function deleteIngredient() {
     const ingrId = this.parentNode.parentNode.dataset.id;
-    console.log(`Checking for ${ingrId}`);
+    
     try {
         const response = await fetch('ingredients/deleteIngredient', {
             method: 'delete',
@@ -28,7 +22,45 @@ async function deleteIngredient() {
         console.log(data);
         location.reload();
     } catch(err) {
-        alert("You tried to do something.")
+        alert("You tried to do something.");
         console.error(err);
     }
 }
+
+async function createRecipe() {
+    const selectedIngredientsIds = checkBoxes();
+    console.log(selectedIngredientsIds);
+    try {
+        const response = await fetch('ingredients/selectIngredients', {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'selectedFromJSFile': selectedIngredientsIds
+            })
+        });
+        const data = await response.json();
+        console.log(data);
+    } catch(err) {
+        alert("You tried to do something.");
+        console.error(err);
+    }
+}
+
+function checkBoxes() {
+    const checkedBoxes = document.querySelectorAll('input[name=checkbox]:checked');
+    const selectedIds = [];
+    checkedBoxes.forEach(box => {
+        const ingrId = box.parentElement.parentElement.dataset.id;
+        selectedIds.push(ingrId);
+    })
+    return selectedIds;
+}
+
+
+// async function testResponse() {
+//     try {
+//         alert("You tried to do something.");
+//     } catch(err) {
+//         console.error(err);
+//     }
+// }

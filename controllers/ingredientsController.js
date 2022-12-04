@@ -35,5 +35,17 @@ module.exports = {
         } catch(err) {
             console.error(err);
         }
+    },
+    selectIngredients: async (req, res) => {
+        try {
+            const selected  = req.body.selectedFromJSFile;
+            console.log(typeof selected);
+            const selection = await Ingredients.find({_id:{$in:selected}});
+            console.log(selection);
+            res.json("Selected");
+        } catch(err) {
+        console.error(err);
+        }
+        
     }
 }
