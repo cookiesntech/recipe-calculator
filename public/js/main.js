@@ -1,12 +1,15 @@
 const deleteBtn = document.querySelectorAll(".delete-ingredient");
 const createRecipeBtn = document.getElementById("create-recipe");
 
+
+//Event listeners
 Array.from(deleteBtn).forEach((el) => {
     el.addEventListener('click', deleteIngredient);
 })
 
 createRecipeBtn.addEventListener('click', createRecipe);
 
+//Delete ingredient by data id
 async function deleteIngredient() {
     const ingrId = this.parentNode.parentNode.dataset.id;
     
@@ -27,25 +30,13 @@ async function deleteIngredient() {
     }
 }
 
+//Pass selected ingredients' IDs to the URL in order to display selection on calculator page
 async function createRecipe() {
     const selectedIngredientsIds = checkBoxes();
-    console.log(selectedIngredientsIds);
-    try {
-        const response = await fetch('ingredients/selectIngredients', {
-            method: 'post',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                'selectedFromJSFile': selectedIngredientsIds
-            })
-        });
-        const data = await response.json();
-        console.log(data);
-    } catch(err) {
-        alert("You tried to do something.");
-        console.error(err);
-    }
+    document.location.href = `/calculator?selectedIngredients=${selectedIngredientsIds}`;
 }
 
+//Get data ids of selected ingredients
 function checkBoxes() {
     const checkedBoxes = document.querySelectorAll('input[name=checkbox]:checked');
     const selectedIds = [];
@@ -56,7 +47,7 @@ function checkBoxes() {
     return selectedIds;
 }
 
-
+//Test function 
 // async function testResponse() {
 //     try {
 //         alert("You tried to do something.");

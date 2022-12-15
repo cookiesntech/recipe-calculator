@@ -9,7 +9,7 @@ const calculatorRoutes = require('./routes/calculator');
 //const menuRoutes = require('./routes/menu');
 
 require('dotenv').config({path: './config/.env'});
-
+const PORT = process.env.PORT;
 connectDB();
 
 app.set('view engine', 'ejs');
@@ -23,6 +23,6 @@ app.use('/calculator', calculatorRoutes);
 //app.use('/recipeBook', bookRoutes);
 //app.use('/menu', menuRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log("Runniiiiiiing");
+app.listen(PORT, () => {
+    console.log(`Runniiiiiiing at ${PORT}`);
 });

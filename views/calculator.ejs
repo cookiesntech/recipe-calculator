@@ -1,12 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-</head>
-<body>
+<%- include('partials/header') -%>
+
     <h1>You've made it here!</h1>
-</body>
-</html>
+    <table>
+        <tr>
+            <td>Ratio</td>
+            <td>Ingredient</td>
+            <td>Amount in stock</td>
+            <td>Water</td>
+            <td>Dairy fat/Oil</td>
+            <td>Sugar</td>
+            <td>Cocoa butter</td>
+        </tr>
+        <% selection.forEach( el => { %>
+            <tr class="ingredient" data-id='<%=el._id%>'>
+                <td><%= el.ratio %>%</td>
+                <td><%= el.ingredient %></td>
+                <td><%= el.ratio / 100 * 250 %></td>
+                <td><%= el.ratio / 100 * el.water %></td>
+                <td><%= el.ratio / 100 * el.fat %></td>
+                <td><%= el.ratio / 100 * el.sugar %></td>
+                <td><%= el.ratio / 100 * el.cocoaButter %></td>
+            </tr>    
+            <% }) %>
+            <tr>
+                <td>100%</td>
+                <td>Totals</td>
+                <td>250</td>
+                <td>
+                <% const waterRatio = selection.map(ingr => { %>
+                    <% Math.round(ingr.ratio / 100 * ingr.water) %>
+                    <% }) -%>
+                    <% console.log(waterRatio) %>
+                    <%= waterRatio.reduce((total, current) => total + current, 0) %>
+                    
+                </td>
+                <td>
+                <% selection.map(ingr => { %>
+                <%= ingr.ratio / 100 * ingr.fat %>
+                <% }) %>
+                </td>
+                <td>
+                <% selection.map(ingr => { %>
+                <%= ingr.ratio / 100 * ingr.sugar %>
+                <% }) %>
+                </td>
+                <td>
+                <% selection.map(ingr => { %>
+                <%= ingr.ratio / 100 * ingr.cocoaButter %>
+                <% }) %>
+                </td>
+            </tr>
+    </table>
+    <button type="submit" id="save-recipe">Save recipe</button>
+<%- include('partials/footer') -%>

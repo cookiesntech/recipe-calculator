@@ -1,6 +1,7 @@
 const Ingredients = require('../models/ingredientModel');
 
 module.exports = {
+    //Display all ingredients
     getIngredients: async (req, res) => {
         try {
             const ingredients = await Ingredients.find();
@@ -9,11 +10,12 @@ module.exports = {
             console.error(err);
         }
     },
+    //Add ingredient to db
     addIngredient: async (req, res) => {
         try {
             await Ingredients.create({
                 ingredient: req.body.ingredient,
-                //category: req.body.category,
+                ratio: req.body.ratio,
                 amount: req.body.amount,
                 water: req.body.water,
                 sugar: req.body.sugar,
@@ -26,6 +28,7 @@ module.exports = {
             console.error(err);
         }
     },
+    //Delete ingredient from db
     deleteIngredient: async (req, res) => {
         console.log(` Ingredient ID: ${req.body.ingredientIdFromJSFile}`);
         try {
@@ -35,17 +38,6 @@ module.exports = {
         } catch(err) {
             console.error(err);
         }
-    },
-    selectIngredients: async (req, res) => {
-        try {
-            const selected  = req.body.selectedFromJSFile;
-            console.log(typeof selected);
-            const selection = await Ingredients.find({_id:{$in:selected}});
-            console.log(selection);
-            res.json("Selected");
-        } catch(err) {
-        console.error(err);
-        }
-        
     }
+    
 }

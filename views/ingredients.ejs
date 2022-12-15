@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Calculator</title>
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
+<%- include('partials/header') -%>
     <h1>Inventory</h1>
     <form action="/ingredients/addIngredient" method="POST">
         <input type="text" placeholder="Ingredient" name="ingredient">
+        <input type="number" placeholder="Ratio in recipes" name="ratio">
         <input type="number" placeholder="Amount in grams" name="amount">
         <input type="number" placeholder="Water %" name="water" step="any">
         <input type="number" placeholder="Dairy fat/oil %" name="fat" step="any">
@@ -23,6 +14,7 @@
         <tr>
             <td>Select</td>
             <td>Ingredient</td>
+            <td>Ratio</td>
             <td>Amount in stock</td>
             <td>Water</td>
             <td>Dairy fat/Oil</td>
@@ -33,11 +25,12 @@
             <tr class="ingredient" data-id='<%=el._id%>'>
                 <td><input type="checkbox" name="checkbox"></td>
                 <td><%= el.ingredient %></td>
-                <td><%= el.amount %></td>
-                <td><%= el.water %></td>
-                <td><%= el.fat %></td>
-                <td><%= el.sugar %></td>
-                <td><%= el.cocoa %></td>
+                <td><%= el.ratio %>%</td>
+                <td><%= el.amount %>g</td>
+                <td><%= el.water %>%</td>
+                <td><%= el.fat %>%</td>
+                <td><%= el.sugar %>%</td>
+                <td><%= el.cocoaButter %>%</td>
                 <td class="edit-delete" >
                     <!-- <span class='edit-ingredient'>Edit</span> -->
                     <span class='delete-ingredient'>Delete</span>
@@ -46,7 +39,7 @@
             <% }) %>
     </table>
     <button type="submit" id="create-recipe">Create recipe</button>
+
     
-    <script src="js/main.js"></script>
-</body>
-</html>
+    
+<%- include('partials/footer') -%>

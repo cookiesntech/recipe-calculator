@@ -9,10 +9,10 @@ const IngredientSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    // category: {
-    //     type: String,
-    //     required: true,
-    // },
+    ratio: {
+        type: Number,
+        required: true,
+    },
     water: {
         type: Number,
         required: false,
