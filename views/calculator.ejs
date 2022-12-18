@@ -1,25 +1,25 @@
 <%- include('partials/header') -%>
 
-    <h1>You've made it here!</h1>
+    <h1>Recipe Calculator</h1>
     <table>
         <tr>
-            <td>Ratio</td>
-            <td>Ingredient</td>
-            <td>Weight</td>
-            <td>Water</td>
-            <td>Dairy fat/Oil</td>
-            <td>Sugar</td>
-            <td>Cocoa butter</td>
+            <th>Ratio</th>
+            <th>Ingredient</th>
+            <th>Grams</th>
+            <th>Water %</th>
+            <th>Dairy fat/Oil %</th>
+            <th>Sugar %</th>
+            <th>Cocoa butter %</th>
         </tr>
         <% selection.forEach( el => { %>
             <tr class="ingredient" data-id='<%=el._id%>'>
                 <td><%= el.ratio %>%</td>
-                <td><%= el.ingredient %></td>
-                <td><%= el.ratio / 100 * 250 %>g</td>
-                <td><%= (el.ratio / 100 * el.water).toFixed(2) %>%</td>
-                <td><%= (el.ratio / 100 * el.fat).toFixed(2) %>%</td>
-                <td><%= (el.ratio / 100 * el.sugar).toFixed(2) %>%</td>
-                <td><%= (el.ratio / 100 * el.cocoaButter).toFixed(2) %>%</td>
+                <td class="ingredient-name"><%= el.ingredient %></td>
+                <td class="ingredient-amount"><%= el.ratio / 100 * 250 %></td>
+                <td><%= (el.ratio / 100 * el.water).toFixed(2) %></td>
+                <td><%= (el.ratio / 100 * el.fat).toFixed(2) %></td>
+                <td><%= (el.ratio / 100 * el.sugar).toFixed(2) %></td>
+                <td><%= (el.ratio / 100 * el.cocoaButter).toFixed(2) %></td>
             </tr>    
             <% }) %>
             <tr>
@@ -30,26 +30,26 @@
                 <% const waterTotal = selection.map(ingr => { %>
                     <%  return ingr.ratio / 100 * ingr.water %>
                     <% }) %>
-                <%= (waterTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>%
+                <%= (waterTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>
                     
                 </td>
                 <td>
                 <% const fatTotal = selection.map(ingr => { %>
                     <%  return ingr.ratio / 100 * ingr.fat %>
                     <% }) %>
-                <%= (fatTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>%
+                <%= (fatTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>
                 </td>
                 <td>
                 <% const sugarTotal = selection.map(ingr => { %>
                     <%  return ingr.ratio / 100 * ingr.sugar %>
                     <% }) %>
-                <%= (sugarTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>%
+                <%= (sugarTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>
                 </td>
                 <td>
                 <% const cocoaButterTotal = selection.map(ingr => { %>
                     <%  return ingr.ratio / 100 * ingr.cocoaButter %>
                     <% }) %>
-                <%= (cocoaButterTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>%
+                <%= (cocoaButterTotal.reduce((total, current) => total + current, 0)).toFixed(2) %>
                 </td>
             </tr>
     </table>

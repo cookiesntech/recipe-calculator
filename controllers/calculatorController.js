@@ -1,4 +1,5 @@
 const Ingredients = require('../models/ingredientModel');
+const Recipe = require('../models/recipeModel')
 
 module.exports = {
     getCalculator: async (req, res) => {
@@ -10,5 +11,19 @@ module.exports = {
             console.error(err);
         }
         
+    },
+    saveRecipe: async (req, res) => {
+        const recipe = req.body.recipe;
+        
+        console.log(recipe);
+        try {
+            await Recipe.create({
+                ingredients: recipe
+            });
+            console.log("Saved recipe");
+            res.json("Saved recipe");
+        } catch(err) {
+            console.error(err);
+        }
     }
 }
