@@ -78,7 +78,7 @@ async function saveRecipe() {
         });
         const data = await response.json();
         console.log(data);
-        location.reload();
+        document.location.href = "/recipeBook";
     } catch(err) {
         alert("You tried to do something.");
         console.error(err);

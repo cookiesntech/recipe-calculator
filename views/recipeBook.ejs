@@ -1,3 +1,14 @@
 <%- include('partials/header') -%>
-    <h1>Recipe Index</h1>
+    <h1><%= user.userName %>'s Recipe Index</h1>
+    <% recipes.forEach( el => { %>
+        <table class="recipe" data-id='<%=el._id%>'>
+            <% for (const ingredient in el.ingredients) { %>
+                <tr>
+                    <td><%= ingredient %></td>
+                    <td><%= el.ingredients[ingredient] %>g</td>
+                </tr>
+            <% } %>   
+        </table>
+         
+        <% }) %>
 <%- include('partials/footer') -%>

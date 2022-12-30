@@ -10,7 +10,7 @@ const connectDB = require('./config/database');
 const mainRoutes = require('./routes/main');
 const ingredientRoutes = require('./routes/ingredients');
 const calculatorRoutes = require('./routes/calculator');
-//const bookRoutes = require('./routes/recipeBook');
+const bookRoutes = require('./routes/recipeBook');
 //const menuRoutes = require('./routes/menu');
 
 require('dotenv').config({path: './config/.env'});
@@ -41,7 +41,7 @@ app.use(flash());
 app.use('/', mainRoutes);
 app.use('/ingredients', ingredientRoutes);
 app.use('/calculator', calculatorRoutes);
-//app.use('/recipeBook', bookRoutes);
+app.use('/recipeBook', bookRoutes);
 //app.use('/menu', menuRoutes);
 
 app.listen(PORT, () => {
