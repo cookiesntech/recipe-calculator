@@ -4,8 +4,8 @@ module.exports = {
     //Display all ingredients
     getIngredients: async (req, res) => {
         try {
-            const ingredients = await Ingredients.find();
-            res.render('ingredients.ejs', {ingredients: ingredients});
+            const ingredients = await Ingredients.find({user: req.user.id});
+            res.render('ingredients.ejs', {ingredients: ingredients, user: req.user});
         } catch(err) {
             console.error(err);
         }
@@ -20,7 +20,8 @@ module.exports = {
                 water: req.body.water,
                 sugar: req.body.sugar,
                 fat: req.body.fat,
-                cocoaButter: req.body.cocoa
+                cocoaButter: req.body.cocoa,
+                user: req.user.id
             });
             console.log("Ingredient added");
             res.redirect('/ingredients');

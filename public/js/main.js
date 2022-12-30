@@ -65,14 +65,10 @@ async function saveRecipe() {
         let amount = amountsElements.item(i).innerHTML.trim();
         ingredientAmounts.push(amount);
     }
-    // const zip = (key, value) => ({[key]: value});
+    
     const recipe = Object.assign(...ingredientNames.map((key, index) => {
         return ({[key]: ingredientAmounts[index]});
     }));
-
-    const keys = Object.keys(recipe);
-    const values = Object.values(recipe);
-    console.log(keys, values);
     
     try {
         const response = await fetch('calculator/saveRecipe', {

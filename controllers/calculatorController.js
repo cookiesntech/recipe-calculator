@@ -18,7 +18,8 @@ module.exports = {
         console.log(recipe);
         try {
             await Recipe.create({
-                ingredients: recipe
+                ingredients: recipe,
+                user: req.user.id
             });
             console.log("Saved recipe");
             res.json("Saved recipe");

@@ -1,5 +1,7 @@
 <%- include('partials/header') -%>
-    <h1>Inventory</h1>
+    <h1><%= user.userName %>'s Inventory</h1>
+    <a href="/recipeBook">Recipe Book</a>
+    <a href="/logout">Log out</a>
     <form action="/ingredients/addIngredient" method="POST">
         <input type="text" placeholder="Ingredient" name="ingredient">
         <input type="number" placeholder="Ratio in recipes" name="ratio">

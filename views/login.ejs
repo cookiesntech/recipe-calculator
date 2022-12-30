@@ -1,0 +1,32 @@
+<%- include('partials/header') -%>
+
+<main class="container">
+    <section class="col-6 mt-5">
+      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+      <div><%= el.msg %></div>
+      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+      messages.info.forEach( el => { %>
+      <div><%= el.msg %></div>
+      <% }) %> <% } %>
+      <form action="/login" method="POST">
+          <label for="exampleInputEmail1"
+            >Email address</label
+          >
+          <input
+            type="email"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+          />
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            id="exampleInputPassword1"
+            name="password"
+          />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+</main>
+
+<%- include('partials/footer') -%>

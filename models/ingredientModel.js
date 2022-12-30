@@ -28,7 +28,11 @@ const IngredientSchema = new mongoose.Schema({
     cocoaButter: {
         type: Number,
         required: false
-    }
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      }
 });
 
 module.exports = mongoose.model('Ingredients', IngredientSchema);
