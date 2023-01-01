@@ -1,7 +1,11 @@
 <%- include('partials/header') -%>
     <h1><%= user.userName %>'s Recipe Index</h1>
     <% recipes.forEach( el => { %>
-        <table class="recipe" data-id='<%=el._id%>'>
+        <table class="recipe">
+            <tr data-id='<%=el._id%>'>
+                <th><h2>Recipe Name</h2></th>
+                <th><input type="checkbox" name="checkbox"></th>
+            </tr>
             <% for (const ingredient in el.ingredients) { %>
                 <tr>
                     <td><%= ingredient %></td>
@@ -11,4 +15,5 @@
         </table>
          
         <% }) %>
+        <button type="submit" id="create-menu">Create menu</button>
 <%- include('partials/footer') -%>

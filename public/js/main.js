@@ -1,6 +1,7 @@
 const deleteBtn = document.querySelectorAll(".delete-ingredient");
 const createRecipeBtn = document.getElementById("create-recipe");
 const saveRecipeBtn = document.getElementById("save-recipe");
+const createMenuBtn = document.getElementById("create-menu");
 
 
 //Event listeners
@@ -10,6 +11,9 @@ Array.from(deleteBtn).forEach((el) => {
 
 if (createRecipeBtn) {
     createRecipeBtn.addEventListener('click', createRecipe);
+}
+if (createMenuBtn) {
+    createMenuBtn.addEventListener('click', createMenu);
 }
 saveRecipeBtn.addEventListener('click', saveRecipe);
 
@@ -40,13 +44,19 @@ async function createRecipe() {
     document.location.href = `/calculator?selectedIngredients=${selectedIngredientsIds}`;
 }
 
+async function createMenu() {
+    const selectedRecipeIds = checkBoxes();
+    document.location.href = `/menu?selectedRecipes=${selectedRecipeIds}`;
+    console.log("Checkbox IDs" + selectedRecipeIds)
+}
+
 //Get data ids of selected ingredients
 function checkBoxes() {
     const checkedBoxes = document.querySelectorAll('input[name=checkbox]:checked');
     const selectedIds = [];
     checkedBoxes.forEach(box => {
-        const ingrId = box.parentElement.parentElement.dataset.id;
-        selectedIds.push(ingrId);
+        const boxId = box.parentElement.parentElement.dataset.id;
+        selectedIds.push(boxId);
     })
     return selectedIds;
 }

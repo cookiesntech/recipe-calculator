@@ -1,3 +1,17 @@
 <%- include('partials/header') -%>
     <h1>Menu</h1>
+    <% selection.forEach( el => { %>
+        <table class="menu-recipe" data-id='<%=el._id%>'>
+            <tr>
+                <th><h2>Recipe Name</h2></th>
+            </tr>
+            <% for (const ingredient in el.ingredients) { %>
+                <tr>
+                    <td><%= ingredient %></td>
+                    <td><%= el.ingredients[ingredient] %>g</td>
+                </tr>
+            <% } %>   
+        </table>
+         
+        <% }) %>
 <%- include('partials/footer') -%>

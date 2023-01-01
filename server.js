@@ -11,7 +11,7 @@ const mainRoutes = require('./routes/main');
 const ingredientRoutes = require('./routes/ingredients');
 const calculatorRoutes = require('./routes/calculator');
 const bookRoutes = require('./routes/recipeBook');
-//const menuRoutes = require('./routes/menu');
+const menuRoutes = require('./routes/menu');
 
 require('dotenv').config({path: './config/.env'});
 require("./config/passport")(passport);
@@ -42,7 +42,7 @@ app.use('/', mainRoutes);
 app.use('/ingredients', ingredientRoutes);
 app.use('/calculator', calculatorRoutes);
 app.use('/recipeBook', bookRoutes);
-//app.use('/menu', menuRoutes);
+app.use('/menu', menuRoutes);
 
 app.listen(PORT, () => {
     console.log(`Runniiiiiiing at ${PORT}`);
