@@ -1,6 +1,8 @@
 # recipe-calculator
-More detailed description will be here soon, in the meantime you can take a look at [my whiteboard](https://miro.com/app/board/uXjVP7ESojk=/?share_link_id=70780059162) explaining the project.
 Inspired by my trusty [excel sheet](https://docs.google.com/spreadsheets/d/1Ry8QNG-YIC2sWV-MULdL3IX2G5YZTfctBNR8MQJmBZw/edit#gid=1311874974), this recipe calculator allows users (professional pastry chefs and chocolatiers) to create balanced chocolate ganache recipes with ingredients from their inventory. 
+
+## Whiteboard
+[Miro](https://miro.com/app/board/uXjVP7ESojk=/?share_link_id=70780059162)
 
 ## Tech Stack
 
