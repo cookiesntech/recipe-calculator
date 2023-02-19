@@ -27,8 +27,8 @@ https://user-images.githubusercontent.com/97986457/213702261-f98e41d7-17c1-4637-
 ## What I'm working on next:
 - enable editing of ingredients' amounts in the recipe calculator to allow custom building of recipes;
 - add "recipe name", "notes" and "image" fields on the calculator page, so the user can save all that information to their recipe book along with the recipe itself;
-- implement optional batch size adjustments when selecting recipes for production - e.g. Batch x4 would put a recipe for 1kg of ganache as opposed to the base 250g;
+- implement optional batch size adjustments when selecting recipes for production - e.g. Batch x4 would put a recipe for 1kg of ganache (as opposed to the base 250g) in the Menu;
 - adjust inventory ingredients' amounts after a recipe from the menu gets marked as "Done" by the amounts used for that recipe;
-- build an aesthetically pleasing frontend, implementing React - which will involve moving a couple of my existing functionalities to React components. Should be fun :D
+- build an aesthetically pleasing frontend, implementing React - which will involve moving a couple of my existing public/main.js functionalities to React components. Should be fun :D
 
 Check out the Miro board to see more of the ideas I have for the future of my app!
