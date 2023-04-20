@@ -13,5 +13,8 @@ module.exports = {
         res.redirect("/ingredients");
       }
     },
+    testFunction: function (a, b) {
+      return a + b;
+    }
   };
   
