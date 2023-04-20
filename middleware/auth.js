@@ -12,9 +12,6 @@ module.exports = {
       } else {
         res.redirect("/ingredients");
       }
-    },
-    testFunction: function (a, b) {
-      return a + b;
     }
   };
   
